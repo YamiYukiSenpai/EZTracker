@@ -93,6 +93,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             dbRef.child(user.getUid()).child("steps").child("saturday").setValue(4269);
                             dbRef.child(user.getUid()).child("steps").child("sunday").setValue(3842);
                             dbRef.child(user.getUid()).child("steps").child("goalSteps").setValue(50000);
+                            dbRef.child(user.getUid()).child("steps").child("calories").setValue(0);
 
                             Toast.makeText(RegistrationActivity.this, R.string.toastReg_success, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
