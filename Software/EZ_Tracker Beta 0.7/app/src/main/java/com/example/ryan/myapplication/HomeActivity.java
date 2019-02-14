@@ -136,6 +136,7 @@ public class HomeActivity extends AppCompatActivity {
                 barChart.animateY(1000,Easing.Linear);
                 barChart.getAxisLeft().setAxisMinimum(0f);
                 barChart.setScaleEnabled(false);
+                barChart.setTouchEnabled(false);
 
                 ArrayList<BarEntry> barEntries = new ArrayList<>();
 
