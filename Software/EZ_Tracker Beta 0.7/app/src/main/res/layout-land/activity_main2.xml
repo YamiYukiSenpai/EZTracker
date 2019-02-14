@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main2Activity"
+    android:orientation="horizontal">
+
+
+
+    <Button
+        android:id="@+id/aboutusBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/icarrow"
+        app:layout_constraintBottom_toBottomOf="@+id/settingsBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarID"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#ea023b54"
+        android:elevation="0dp"
+        android:gravity="center"
+        android:paddingTop="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsBar">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="0dp"
+            android:src="@drawable/ezlogotransparent" />
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ea023b54"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbarID"
+        app:layout_constraintVertical_bias="0.0"
+        app:tabGravity="fill"
+        app:tabSelectedTextColor="@color/kinda_white"
+        app:tabIndicatorColor="@color/crimson_red"
+        app:tabMaxWidth="0dp"
+        app:tabMode="fixed"
+        app:tabTextColor="@color/common_google_signin_btn_text_dark" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPagers"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tablayout_id"></android.support.v4.view.ViewPager>
+
+    <TextView
+        android:id="@+id/settingsBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#873150"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/about_us_header"
+        android:textAllCaps="true"
+        android:textColor="@color/kinda_white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/settingsBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/aboutusBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
