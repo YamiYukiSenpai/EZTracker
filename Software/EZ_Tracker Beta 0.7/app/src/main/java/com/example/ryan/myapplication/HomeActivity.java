@@ -234,7 +234,7 @@ public class HomeActivity extends AppCompatActivity {
                         days = new String[] {getString(R.string.bar_Thurs),getString(R.string.bar_Fri),getString(R.string.bar_Sat),getString(R.string.bar_Sun),getString(R.string.bar_Mon),getString(R.string.bar_Tue),getString(R.string.bar_Wed)};
                         break;
                     case 5:
-                        days = new String[] {getString(R.string.bar_Mon),getString(R.string.bar_Tue),getString(R.string.bar_Sun),getString(R.string.bar_Mon),getString(R.string.bar_Tue),getString(R.string.bar_Wed),getString(R.string.bar_Thurs)};
+                        days = new String[] {getString(R.string.bar_Fri),getString(R.string.bar_Sat),getString(R.string.bar_Sun),getString(R.string.bar_Mon),getString(R.string.bar_Tue),getString(R.string.bar_Wed),getString(R.string.bar_Thurs)};
                         break;
                     case 6:
                         days = new String[] {getString(R.string.bar_Sun),getString(R.string.bar_Sat),getString(R.string.bar_Mon),getString(R.string.bar_Tue),getString(R.string.bar_Wed),getString(R.string.bar_Thurs),getString(R.string.bar_Fri)};
