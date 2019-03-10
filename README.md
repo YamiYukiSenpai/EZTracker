@@ -62,8 +62,6 @@ you need if you decide to re-purpose the device later on.
 10. Power down with `sudo powerdown` from the terminal by pressing and set the
     Pi aside. You will not be using it until sensor testing.
 
- 
-
 ### Step 2: Breadboarding and Prototyping
 
 Here we will cover basic sensor connectivity to the Raspberry Pi using a
@@ -95,7 +93,7 @@ stage.
     are being detected correctly by viewing their address values.
 
 8.  (Optional but recommended) Open the terminal with `ctrl + alt + t` and run
-    the command:` i2cdetect –y 1`*.* Ideally, the resulting output should be as
+    the command:`i2cdetect –y 1`*.* Ideally, the resulting output should be as
     follows, if not double check your connections and try again.
 
     ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build3.png)
