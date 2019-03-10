@@ -238,3 +238,5 @@ to download libraries in order to test each sensor.
 2.  Run the code using `sudo python cap-touch.py`. You will then be able to
     touch each of the nodes on the sensor, or you can have individual wires
     running from each position. Below is an example output.
+
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build12.png)
