@@ -86,7 +86,7 @@ stage.
 5.  Using the connectors that came with the sensors, plug them into the
     breadboard and rest the sensors accordingly. Below is an example.
 
-![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build2.png)
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build2.png)
 
 6.  Connect the corresponding cables from the Raspberry Pi into the matched
     holes for the sensor.
@@ -98,6 +98,6 @@ stage.
     the command: *i2cdetect –y 1.* Ideally, the resulting output should be as
     follows, if not double check your connections and try again.
 
-![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build3.png)
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build3.png)
 
 9.  Voila! You have your mock up sensor connection!
