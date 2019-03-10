@@ -53,9 +53,9 @@ you need if you decide to re-purpose the device later on.
 
 7.  Enable I2C. This is the method we will be using to communicate with our
     Raspberry Pi. Type `sudo apt-get install -y python-smbus i2c-tools` into the
-    terminal by pressing `ctrl+alt+t`.
+    terminal by pressing `ctrl+alt+t.`
 
-8.  Type `sudo raspi-config` into the terminal.
+8.  Type `sudo raspi-config `into the terminal.
 
 9.  Go to interfacing options \> and enable I2C.
 
