@@ -94,10 +94,89 @@ stage.
 7.  (Optional but recommended) Power on the Raspberry Pi to see if the sensors
     are being detected correctly by viewing their address values.
 
-8.  (Optional but recommended) Open the terminal with *ctrl + alt + t* and run
-    the command: *i2cdetect –y 1.* Ideally, the resulting output should be as
+8.  (Optional but recommended) Open the terminal with `ctrl + alt + t` and run
+    the command:` i2cdetect –y 1`*.* Ideally, the resulting output should be as
     follows, if not double check your connections and try again.
 
     ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build3.png)
 
 9.  Voila! You have your mock up sensor connection!
+
+PCB Design
+----------
+
+This is part of the project that needs to be proceeded with care and caution. It
+is advised to double check your designs before purchasing etching and cutting
+services. For this step, [Fritzing](http://fritzing.org/download/) will be used.
+It is an open-source application that allows the user to easily create PCB
+schematics for different development platforms. It is highly customizable and
+easy to use.
+
+### Step 1: Fritzing
+
+1.  [Download](http://fritzing.org/download/) and extract Fritzing. Installation
+    notes are on the linked page for various operating systems.
+
+2.  (Optional) Download the [AdaFruit Fritzing
+    Library.](https://github.com/adafruit/Fritzing-Library) Handy if you want to
+    take the extra step and create a mock or your own connection/designs in
+    Fritzing.
+
+3.  Download our Fritzing file
+    [here](https://github.com/YamiYukiSenpai/EZTracker/blob/master/pcb%20files/ez_v1.fzz)
+    and open it. From the PCB tab, you can make changes at your leisure and pick
+    it apart to see how it was made. Below is an image of our design.
+
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build4.png)
+
+4.  Export as a gerber file (the format primarily used in create a physical
+    PCB). *File \> Export for Production \> Extended Gerber* and select an
+    appropriate folder.
+
+5.  Zip/Compress the folder containing the gerber files and send them to your
+    etcher of choice.
+
+### Step 2: Soldering
+
+Once you have your PCB etched, we are ready to solder the parts together. Again,
+please double check your design before finally soldering.
+
+1.  Gather your sensors, copper wire, wire stripper, the pin headers that came
+    with the sensor, your PCB, solder, and soldering iron.
+
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build5.png)
+
+2.  Solder your headers that came with your sensors, pictured above, to the
+    corresponding holes. Put the longer end of the headers into your breadboard
+    and place your sensor holes into the upright pins and solder all of the
+    pins. This will ensure your sensor doesn’t move too much during soldering
+    and a sturdy connection. **Note:** [Watch this video on soldering tips for
+    additional help.](https://www.youtube.com/watch?v=oqV2xU1fee8) **Solder in a
+    well ventilated area and use safety glasses.**
+
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build6.png)
+
+3.  Solder your vias on your PCB. The easiest method we found, was to strip your
+    copper wiring, stick it into the breadboard, and slide one via onto it so
+    that it is flat and stable for soldering. Imaged below is an example, and
+    repeat for each via. Once each via is soldered, snip the excess wire with
+    cutters.
+
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build7.png)
+
+4.  Solder your stackable headers. Using the breadboard again, take some extra
+    copper wire from the snipped vias, or strip more, and place it into the
+    female part of the header. The more, the sturdier. Flip the header over and
+    plug it into the breadboard. Place your PCB onto the pins sticking out and
+    solder the connections. Example placeholder image below.
+
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build8.png)
+
+5.  Repeat the process for the 2x20 header for the Raspberry Pi. It’s not
+    entirely necessary to solder all of the holes, but it ensures the PCB does
+    not bend as much.
+
+6.  Your soldering should be complete. Plug everything in accordingly, and you
+    should be ready for the next step! Example placeholder image below.
+
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build9.png)
