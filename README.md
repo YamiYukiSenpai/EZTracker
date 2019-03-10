@@ -23,7 +23,7 @@ get the project to completion. Spreadsheet with hyperlinks can be found
 Assembly
 --------
 
-### Preparing the Pi
+### Step 1: Preparing the Pi
 
 In this step we will cover basic Raspberry Pi imaging so you are able to login
 and access your device to test and drive your sensors. Download the latest
@@ -55,7 +55,7 @@ you need if you decide to re-purpose the device later on.
     Raspberry Pi. Type `sudo apt-get install -y python-smbus i2c-tools` into the
     terminal by pressing `ctrl+alt+t.`
 
-8.  Type `sudo raspi-config `into the terminal.
+8.  Type `sudo raspi-config` into the terminal.
 
 9.  Go to interfacing options \> and enable I2C.
 
@@ -64,4 +64,40 @@ you need if you decide to re-purpose the device later on.
 
  
 
- 
+### Step 2: Breadboarding and Prototyping
+
+Here we will cover basic sensor connectivity to the Raspberry Pi using a
+breadboard for creating mock layout/design that will be used in the PCB creation
+stage.
+
+1.  Gather the following items: Breadboard, LSM303 Sensor, MPR121, 128x64  
+    LCD sensor, and 4 Female-to-Male GPIO cables.
+
+2.  Identify the labels on the sensor. For basic usage, we will be using: 3.3v,
+    GND, SDA, and SCL.
+
+3.  Identify the corresponding pinouts on the Raspberry Pi. [This website is a
+    great tool to use if you are unsure.](https://pinout.xyz/)
+
+4.  Plug in the female part of the GPIO cables into the Raspberry Pi’s 1,3,5,
+    and 6 pins, based on the chart from pinout.xyz. These are the pins we are
+    going to be using for this project.
+
+5.  Using the connectors that came with the sensors, plug them into the
+    breadboard and rest the sensors accordingly. Below is an example.
+
+![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build2.png)
+
+6.  Connect the corresponding cables from the Raspberry Pi into the matched
+    holes for the sensor.
+
+7.  (Optional but recommended) Power on the Raspberry Pi to see if the sensors
+    are being detected correctly by viewing their address values.
+
+8.  (Optional but recommended) Open the terminal with *ctrl + alt + t* and run
+    the command: *i2cdetect –y 1.* Ideally, the resulting output should be as
+    follows, if not double check your connections and try again.
+
+![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build3.png)
+
+9.  Voila! You have your mock up sensor connection!
