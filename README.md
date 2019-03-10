@@ -239,4 +239,35 @@ to download libraries in order to test each sensor.
     touch each of the nodes on the sensor, or you can have individual wires
     running from each position. Below is an example output.
 
-    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build12.png)
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build15.png)
+
+### Unit Testing - 128x64 LED
+
+1.  Download the test code using:
+
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    git clone https://github.com/adafruit/Adafruit_Python_SSD1306.git
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2.  Navigate to the `Adafruit_Python_SSD1306/examples` directory and run the
+    example code using
+
+    `sudo python shapes.py`. The following should look like the placeholder
+    image below.
+
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build13.png)
+
+Production Testing
+------------------
+
+[We have provided a rough case
+file](https://github.com/rfmaynard/Accel-MagnetoMeter/blob/master/case%20files/easeOmeter_CaseFiles_v4.cdr)
+(Created with CorelDraw x6) for those that wish to continue further for
+potential real world use. This case will ensure your sensors, Pi, and PCB are
+protected all while providing enough room for you to remove the sensor at your
+leisure. For portability, there is definite room that can be improved upon if
+you wish to make the device smaller and more portable. This concludes the end of
+the build instructions, and below is a placeholder image regarding the final
+product.
+
+![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build14.png)
