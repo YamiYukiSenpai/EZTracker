@@ -16,7 +16,7 @@ can lead to a more active lifestyle.
 
 Firstly, a list of parts will be required in order to recreate this project. Below is price a breakdown of the prices and parts for each component used to get the project to completion. Spreadsheet with hyper links can be found at the [EZ Tracker Repository.](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/EZ_Parts_Budget.xlsx)
 
- ![]()
+ ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build1.png)
 
 ## Assembly
 
