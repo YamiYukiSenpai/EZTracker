@@ -180,3 +180,61 @@ please double check your design before finally soldering.
     should be ready for the next step! Example placeholder image below.
 
     ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build9.png)
+
+Power Up
+--------
+
+Once everything is plugged in, and you have double checked your connections,
+power on your Raspberry Pi.
+
+1.  Open up the terminal with `ctrl + alt + t` and run the command `i2cdetect –y
+    1.`
+
+2.  Hopefully everything is in working order. If so, you will see the following
+    address values.
+
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build10.png)
+
+3.  If not, go back and check if your sensors are connected accordingly.
+
+### Unit Testing - LSM303
+
+For this portion, you will need an internet connection as you will be required
+to download libraries in order to test each sensor.
+
+1.  Make sure your Pi is up to date with the latest packages. Run `sudo apt
+    update` in the terminal to make sure everything is up to date.
+
+2.  We will be using Python to test the sensors, and will need the appropriate
+    tools. Run the following commands in the terminal to ensure we have
+    everything required to read from the sensor. We will test the LSM303 first.
+
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    sudo apt-get install git build-essential python-dev
+    cd ~
+    git clone https://github.com/adafruit/Adafruit_Python_LSM303.git
+    cd Adafruit_Python_LSM303
+    sudo python setup.py install
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3.  Navigate to the `/Adafruit_Python_LSM303/examples` directory.
+
+4.  Test your sensor by running `sudo python simpletest.py`. Your readings
+    should look like the following:
+
+    ![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build11.png)
+
+5.  You can test the readings by moving your device in different directions with
+    different speeds. You will notice the values changing accordingly.
+
+### Unit Testing - MPR121
+
+1.  Download the test code from Jonas’s repository with:
+
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    wget https://raw.githubusercontent.com/YamiYukiSenpai/MacroKeyTouchSensor/master/cap-touch.py
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2.  Run the code using `sudo python cap-touch.py`. You will then be able to
+    touch each of the nodes on the sensor, or you can have individual wires
+    running from each position. Below is an example output.
