@@ -83,17 +83,16 @@ public class RegistrationActivity extends AppCompatActivity {
 
                             dbRef.child(user.getUid()).setValue(userInfo);
 
-                            dbRef.child(user.getUid()).child("realSteps").setValue(0);
-
-                            dbRef.child(user.getUid()).child("steps").child("monday").setValue(5432);
-                            dbRef.child(user.getUid()).child("steps").child("tuesday").setValue(5876);
-                            dbRef.child(user.getUid()).child("steps").child("wednesday").setValue(4928);
-                            dbRef.child(user.getUid()).child("steps").child("thursday").setValue(5122);
-                            dbRef.child(user.getUid()).child("steps").child("friday").setValue(5596);
-                            dbRef.child(user.getUid()).child("steps").child("saturday").setValue(4269);
-                            dbRef.child(user.getUid()).child("steps").child("sunday").setValue(3842);
-                            dbRef.child(user.getUid()).child("steps").child("goalSteps").setValue(50000);
+                            dbRef.child(user.getUid()).child("steps").child("monday").setValue(0);
+                            dbRef.child(user.getUid()).child("steps").child("tuesday").setValue(0);
+                            dbRef.child(user.getUid()).child("steps").child("wednesday").setValue(0);
+                            dbRef.child(user.getUid()).child("steps").child("thursday").setValue(0);
+                            dbRef.child(user.getUid()).child("steps").child("friday").setValue(0);
+                            dbRef.child(user.getUid()).child("steps").child("saturday").setValue(0);
+                            dbRef.child(user.getUid()).child("steps").child("sunday").setValue(0);
+                            dbRef.child(user.getUid()).child("steps").child("goalSteps").setValue(45000);
                             dbRef.child(user.getUid()).child("steps").child("calories").setValue(0);
+                            dbRef.child(user.getUid()).child("steps").child("realSteps").setValue(0);
 
                             Toast.makeText(RegistrationActivity.this, R.string.toastReg_success, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);

@@ -67,6 +67,7 @@ public class HomeActivity extends AppCompatActivity {
     private TextView current;
     private TextView currentPercent;
     private Button goalButton;
+    private TextView stepsReal;
 
     int goal_steps;
     int total_steps;
@@ -97,6 +98,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String realName = dataSnapshot.child("name").getValue(String.class);
                 name.setText(realName+ "'s " + getString(R.string.home_dailySteps));
+
             }
 
             @Override
@@ -119,18 +121,18 @@ public class HomeActivity extends AppCompatActivity {
                 float realFriday = dataSnapshot.child("friday").getValue(Integer.class);
                 float realSaturday = dataSnapshot.child("saturday").getValue(Integer.class);
                 float realSunday = dataSnapshot.child("sunday").getValue(Integer.class);
-/*
+
+
+                int realStep = dataSnapshot.child("realSteps").getValue(Integer.class);
+                stepsReal.setText("Real Steps" + realStep);
                 if(currentDay==5){
-                    float realStep = dataSnapshot.child("realSteps").getValue(Integer.class);
-                    realThursday = realStep;
-                  //  FirebaseUser user = firebaseAuth.getCurrentUser();
-                  //  myRef.child(user.getUid()).child("thursday").setValue(realThursday);
-                }
+                 //  int realStep = dataSnapshot.child()
+                 // String reallyStep = Float.toString(realStep);
 
-
-
-*/
-
+                   realThursday = realStep;
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                  myRef.child(user.getUid()).child("steps").child("thursday").setValue(realThursday);
+                    }
 
                 barChart.setDrawBarShadow(false);
                 barChart.setDrawGridBackground(false);
@@ -403,6 +405,7 @@ public class HomeActivity extends AppCompatActivity {
         barChart = findViewById(R.id.barChart);
         goal_chart = findViewById(R.id.goal_pieChart);
         goalButton = findViewById(R.id.goalButton);
+        stepsReal = findViewById(R.id.realStepsPlace);
     }
 
     public class MyXAxisValueFormatter implements IAxisValueFormatter{

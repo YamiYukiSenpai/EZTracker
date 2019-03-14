@@ -314,5 +314,24 @@
         app:layout_constraintTop_toTopOf="@id/goal_pieChart"
         app:layout_constraintVertical_bias="1.0" />
 
+    <TextView
+        android:id="@+id/realStepsPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text=""
+        android:textAlignment="textEnd"
+        android:textColor="#f7f7f7"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/goal_pieChart"
+        app:layout_constraintEnd_toEndOf="@+id/goal_pieChart"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/goal_pieChart"
+        app:layout_constraintTop_toTopOf="@+id/goal_pieChart"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </android.support.constraint.ConstraintLayout>
