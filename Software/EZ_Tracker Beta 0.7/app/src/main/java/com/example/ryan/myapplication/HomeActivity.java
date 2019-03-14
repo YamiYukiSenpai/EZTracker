@@ -126,13 +126,13 @@ public class HomeActivity extends AppCompatActivity {
                 int realStep = dataSnapshot.child("realSteps").getValue(Integer.class);
                 stepsReal.setText("Real Steps" + realStep);
                 if(currentDay==5){
-                 //  int realStep = dataSnapshot.child()
-                 // String reallyStep = Float.toString(realStep);
 
                    realThursday = realStep;
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                   myRef.child(user.getUid()).child("steps").child("thursday").setValue(realThursday);
                     }
+                    //TODO: create cases for the other days of the week
+
 
                 barChart.setDrawBarShadow(false);
                 barChart.setDrawGridBackground(false);
