@@ -12,7 +12,36 @@ import struct
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
+import datetime
+import pyrebase
+import json
 
+class EZdatabase:
+    def __init__(self, email, password):
+        self._email = email
+        self._password = password
+
+        config = {
+            "apiKey": "AIzaSyDJ_VX1PCVjNkVJJK27xwsykxeKMaP7esU",
+            "authDomain": "eztracker1-da005.firebaseio.com/",
+            "databaseURL": "https://eztracker1-da005.firebaseio.com/",
+            "projectId": "eztracker1-da005",
+            "storageBucket": "eztracker1-da005.appspot.com"
+        }
+
+        firebase = pyrebase.initialize_app(config)
+        auth = self._firebase.auth()
+        user = auth.sign_in_with_email_and_password(self._email, self._password)
+        self._ez_db = self._firebase.database()
+        user_data = auth.get_account_info(self._user['idToken'])
+        self._uid = user_data['users'][0]['localId']
+
+    def get_steps(self, day):
+        num_steps = self._ez_db(self._uid).child("steps").child("today").get()
+        return num_steps.val()
+
+    def update_steps(self, day, steps):
+        self._ez_db.child(self._uid).child("steps").update({day: steps})
 
 class Display:
     def __init__(self, padding):
@@ -137,7 +166,7 @@ if (__name__ == "__main__"):
             new_y = int(new_y[0])
             #new_z = int(new_z[0])
 
-            if ((x != new_x) or (y != new_y) or (z != new_z)):
+            if ((x != new_x) or (y != new_y)):
             # if (((x > (new_x + accel_sensitivity)) and
             #      (x < (new_x - accel_sensitivity))) or
             #     ((y > (new_y + accel_sensitivity)) and
