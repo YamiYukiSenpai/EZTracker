@@ -57,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private FirebaseAuth mAuth;
     private String userID;
+    private FirebaseAuth firebaseAuth;
 
     private BarChart barChart;
     private PieChart goal_chart;
@@ -76,6 +77,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        firebaseAuth = FirebaseAuth.getInstance();
 
 
         //getting date for bar graph manipulation
@@ -109,6 +111,7 @@ public class HomeActivity extends AppCompatActivity {
         getSteps.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 float realMonday = dataSnapshot.child("monday").getValue(Integer.class);
                 float realTuesday = dataSnapshot.child("tuesday").getValue(Integer.class);
                 float realWednesday = dataSnapshot.child("wednesday").getValue(Integer.class);
@@ -116,6 +119,18 @@ public class HomeActivity extends AppCompatActivity {
                 float realFriday = dataSnapshot.child("friday").getValue(Integer.class);
                 float realSaturday = dataSnapshot.child("saturday").getValue(Integer.class);
                 float realSunday = dataSnapshot.child("sunday").getValue(Integer.class);
+/*
+                if(currentDay==5){
+                    float realStep = dataSnapshot.child("realSteps").getValue(Integer.class);
+                    realThursday = realStep;
+                  //  FirebaseUser user = firebaseAuth.getCurrentUser();
+                  //  myRef.child(user.getUid()).child("thursday").setValue(realThursday);
+                }
+
+
+
+*/
+
 
                 barChart.setDrawBarShadow(false);
                 barChart.setDrawGridBackground(false);
