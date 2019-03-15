@@ -30,18 +30,19 @@ class EZdatabase:
         }
 
         firebase = pyrebase.initialize_app(config)
-        auth = self._firebase.auth()
+        auth = firebase.auth()
         user = auth.sign_in_with_email_and_password(self._email, self._password)
-        self._ez_db = self._firebase.database()
-        user_data = auth.get_account_info(self._user['idToken'])
+        self._ez_db = firebase.database()
+        user_data = auth.get_account_info(user['idToken'])
         self._uid = user_data['users'][0]['localId']
+        self._ez_db.child(self._uid).child("steps").update({"realSteps": 0})
 
-    def get_steps(self, day):
-        num_steps = self._ez_db(self._uid).child("steps").child("today").get()
-        return num_steps.val()
+    # def get_steps(self, day):
+    #     num_steps = self._ez_db(self._uid).child("steps").child(today).get()
+    #     return num_steps.val()
 
-    def update_steps(self, day, steps):
-        self._ez_db.child(self._uid).child("steps").update({day: steps})
+    def update_steps(self, steps):
+        self._ez_db.child(self._uid).child("steps").update({"realSteps": steps})
 
 class Display:
     def __init__(self, padding):
@@ -112,6 +113,7 @@ class Accel:
     def get_data_accel(self):
         self._accel = self._accel_mag.read()
         self._accel_x, self._accel_y = self._accel
+        return self._accel
 
 
 class TouchSensor:
@@ -127,18 +129,22 @@ class TouchSensor:
         return self._cap_touch.touched()
 
 if (__name__ == "__main__"):
+    u_email = "konakonata@outlook.com"
+    u_pass = "password"
+    ez_db = EZdatabase(u_email, u_pass)
     accel = Accel()
     step_count = StepDisplay(0, -2)
     touch = TouchSensor(128, 64)
     num_steps = 0
     update_steps = False
     step_display = False
-    accel_sensitivity = 1
+    accel_sensitivity = 50
     x = 0
     y = 0
     z = 0
     new_x = 0
     new_y = 0
+    new_z = 0
 
     test = False
     test2 = True
@@ -148,8 +154,7 @@ if (__name__ == "__main__"):
     while True:
         current_touched = touch.last_touch()
 
-        print(str(y))
-        print(str(x))
+        print('X = {0}, Y = {1}, Z = {2}, new_x = {3}, new_y = {4}, new_z = {5}'.format(x, y, z, new_x, new_y, new_z))
 
         if (step_display is True):
                 step_count.start_display_count()
@@ -157,32 +162,27 @@ if (__name__ == "__main__"):
             step_count.display_off()
 
         if (update_steps is True):
-            accel.get_data_accel()
-            new_x = accel.get_x()[0]
-            new_y = accel.get_y()
-            #new_z = accel.get_z()
+            data_accel, data_mag = accel.get_data_accel()
+            new_x, new_y, new_z = data_accel
 
-            #new_x = int(new_x[0])
-            new_y = int(new_y[0])
-            #new_z = int(new_z[0])
-
-            if ((x != new_x) or (y != new_y)):
-            # if (((x > (new_x + accel_sensitivity)) and
-            #      (x < (new_x - accel_sensitivity))) or
-            #     ((y > (new_y + accel_sensitivity)) and
-            #      (y < (new_y - accel_sensitivity)))):
+            # if ((x != new_x) or (y != new_y)):
+            if (((x > (new_x + accel_sensitivity)) or
+                 (x < (new_x - accel_sensitivity))) or
+                ((y > (new_y + accel_sensitivity)) or
+                 (y < (new_y - accel_sensitivity))) or
+                ((z > (new_z + accel_sensitivity)) or
+                 (z < (new_z - accel_sensitivity)))):
                                 
                 x = new_x
                 y = new_y
+                z = new_z
 
-                print(str(new_x + accel_sensitivity))
-                print(str(new_y + accel_sensitivity))
-                # z = int(new_z[0])
                 if (test2 is True):
                     print("X = {0}, Y = {1}".format(x, y))
                 num_steps += 1
                 step_count.update_count(num_steps)
                 print('{0} steps'.format(num_steps))
+                ez_db.update_steps(num_steps)
 
         if (test is True):
             step_count.start_display_count()
