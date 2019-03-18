@@ -122,15 +122,20 @@ public class HomeActivity extends AppCompatActivity {
                 float realSaturday = dataSnapshot.child("saturday").getValue(Integer.class);
                 float realSunday = dataSnapshot.child("sunday").getValue(Integer.class);
 
-
+                //pulling steps from DB and sending them to appropriate days
                 int realStep = dataSnapshot.child("realSteps").getValue(Integer.class);
-                stepsReal.setText("Real Steps" + realStep);
-                if(currentDay==5){
+                stepsReal.setText(getString(R.string.bar_RealSteps) + realStep);
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+/*
+                if(currentDay==1){
+                    realSunday = realStep;
+                    myRef.child(user.getUid()).child("steps").child("thursday").setValue(realThursday);
+                }
 
-                   realThursday = realStep;
-                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                  myRef.child(user.getUid()).child("steps").child("thursday").setValue(realThursday);
-                    }
+                if(currentDay==2){
+                    realMonday = realStep;
+
+                }*/
                     //TODO: create cases for the other days of the week
 
 
@@ -150,7 +155,7 @@ public class HomeActivity extends AppCompatActivity {
                 barChart.notifyDataSetChanged();
                 barChart.invalidate();
                 barChart.setBackgroundColor(Color.TRANSPARENT);
-                barChart.animateY(1000,Easing.Linear);
+               // barChart.animateY(1000,Easing.Linear);
                 barChart.getAxisLeft().setAxisMinimum(0f);
                 barChart.setScaleEnabled(false);
                 barChart.setTouchEnabled(false);
@@ -167,6 +172,8 @@ public class HomeActivity extends AppCompatActivity {
                         barEntries.add(new BarEntry(2,realWednesday));
                         barEntries.add(new BarEntry(1,realTuesday));
                         barEntries.add(new BarEntry(0,realMonday));
+                        realSunday = realStep;
+                        myRef.child(user.getUid()).child("steps").child("sunday").setValue(realSunday);
                         break;
                     case 2:
                         barEntries.add(new BarEntry(6,realMonday));
@@ -176,6 +183,8 @@ public class HomeActivity extends AppCompatActivity {
                         barEntries.add(new BarEntry(2,realThursday));
                         barEntries.add(new BarEntry(1,realWednesday));
                         barEntries.add(new BarEntry(0,realTuesday));
+                        realMonday = realStep;
+                        myRef.child(user.getUid()).child("steps").child("monday").setValue(realMonday);
                         break;
                     case 3:
                         barEntries.add(new BarEntry(6,realTuesday));
@@ -185,6 +194,8 @@ public class HomeActivity extends AppCompatActivity {
                         barEntries.add(new BarEntry(2,realFriday));
                         barEntries.add(new BarEntry(1,realThursday));
                         barEntries.add(new BarEntry(0,realWednesday));
+                        realTuesday = realStep;
+                        myRef.child(user.getUid()).child("steps").child("tuesday").setValue(realTuesday);
                         break;
                     case 4:
                         barEntries.add(new BarEntry(6,realWednesday));
@@ -194,6 +205,8 @@ public class HomeActivity extends AppCompatActivity {
                         barEntries.add(new BarEntry(2,realSaturday));
                         barEntries.add(new BarEntry(1,realFriday));
                         barEntries.add(new BarEntry(0,realThursday));
+                        realWednesday = realStep;
+                        myRef.child(user.getUid()).child("steps").child("wednesday").setValue(realWednesday);
                         break;
                     case 5:
                         barEntries.add(new BarEntry(6,realThursday));
@@ -203,6 +216,8 @@ public class HomeActivity extends AppCompatActivity {
                         barEntries.add(new BarEntry(2,realSunday));
                         barEntries.add(new BarEntry(1,realSaturday));
                         barEntries.add(new BarEntry(0,realFriday));
+                        realThursday = realStep;
+                        myRef.child(user.getUid()).child("steps").child("thursday").setValue(realThursday);
                         break;
                     case 6:
                         barEntries.add(new BarEntry(6,realFriday));
@@ -212,6 +227,8 @@ public class HomeActivity extends AppCompatActivity {
                         barEntries.add(new BarEntry(2,realMonday));
                         barEntries.add(new BarEntry(1,realSaturday));
                         barEntries.add(new BarEntry(0,realSunday));
+                        realFriday = realStep;
+                        myRef.child(user.getUid()).child("steps").child("friday").setValue(realFriday);
                         break;
                     case 7:
                         barEntries.add(new BarEntry(6,realSaturday));
@@ -221,6 +238,8 @@ public class HomeActivity extends AppCompatActivity {
                         barEntries.add(new BarEntry(2,realTuesday));
                         barEntries.add(new BarEntry(1,realMonday));
                         barEntries.add(new BarEntry(0,realSunday));
+                        realSaturday = realStep;
+                        myRef.child(user.getUid()).child("steps").child("saturday").setValue(realSaturday);
                         break;
                     default:
                         return;
@@ -290,7 +309,7 @@ public class HomeActivity extends AppCompatActivity {
                 goal_chart.invalidate();
                 goal_chart.setHoleColor(Color.TRANSPARENT);
                 goal_chart.getDescription().setEnabled(false);
-                goal_chart.animateY(1000,Easing.EaseInOutCubic);
+               // goal_chart.animateY(1000,Easing.EaseInOutCubic);
                 goal_chart.getLegend().setEnabled(true);
                 goal_chart.getLegend().setTextColor(Color.WHITE);
                 goal_chart.getLegend().setTextSize(12f);
