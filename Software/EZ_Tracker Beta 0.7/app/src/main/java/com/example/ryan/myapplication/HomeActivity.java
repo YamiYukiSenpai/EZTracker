@@ -172,6 +172,10 @@ public class HomeActivity extends AppCompatActivity {
                         barEntries.add(new BarEntry(2,realWednesday));
                         barEntries.add(new BarEntry(1,realTuesday));
                         barEntries.add(new BarEntry(0,realMonday));
+/*
+                        if(realSunday != realStep){
+                            myRef.child(user.getUid()).child("steps").child("sunday").setValue(0);
+                        }*/
                         realSunday = realStep;
                         myRef.child(user.getUid()).child("steps").child("sunday").setValue(realSunday);
                         break;
@@ -183,6 +187,10 @@ public class HomeActivity extends AppCompatActivity {
                         barEntries.add(new BarEntry(2,realThursday));
                         barEntries.add(new BarEntry(1,realWednesday));
                         barEntries.add(new BarEntry(0,realTuesday));
+
+                        /*if(realMonday != realStep){
+                            myRef.child(user.getUid()).child("steps").child("realSteps").setValue(0);
+                        }*/
                         realMonday = realStep;
                         myRef.child(user.getUid()).child("steps").child("monday").setValue(realMonday);
                         break;
