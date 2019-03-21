@@ -117,5 +117,5 @@
     <string name="update_entHeight">Entrez une hauteur</string>
     <string name="update_entWeight">Entrez un poids</string>
     <string name="update_entDob">Entrez une date de naissance</string>
-    <string name="bar_RealSteps">Pas:</string>
+    <string name="bar_RealSteps">Pas</string>
 </resources>

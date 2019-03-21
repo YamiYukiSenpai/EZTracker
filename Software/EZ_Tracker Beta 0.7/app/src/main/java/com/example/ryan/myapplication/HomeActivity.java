@@ -124,7 +124,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 //pulling steps from DB and sending them to appropriate days
                 int realStep = dataSnapshot.child("realSteps").getValue(Integer.class);
-                stepsReal.setText(getString(R.string.bar_RealSteps) + realStep);
+                stepsReal.setText(getString(R.string.bar_RealSteps) + "\n" + realStep);
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 /*
                 if(currentDay==1){
@@ -323,6 +323,9 @@ public class HomeActivity extends AppCompatActivity {
                 goal_chart.getLegend().setTextSize(12f);
                 goal_chart.setDrawEntryLabels(false);
 
+
+
+
                 Legend l = goal_chart.getLegend();
                 l.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
 
@@ -336,6 +339,7 @@ public class HomeActivity extends AppCompatActivity {
                 int percentSteps = (int)(((double) total_steps / (double) goal_steps) * 100.0);
                 currentPercent.setText(percentSteps + "%");
 
+
                 pie_label.add(getString(R.string.home_pie_total));
                 pie_label.add(getString(R.string.pi_goal));
 
@@ -347,6 +351,35 @@ public class HomeActivity extends AppCompatActivity {
                 goal_data.setValueTextSize(13f);
 
                 goal_chart.setData(goal_data);
+
+                if((double)total_steps == (double)goal_steps) {
+                    Toast.makeText(HomeActivity.this, "Congratulations! You met your goal!", Toast.LENGTH_SHORT).show();
+                }
+
+                if((double)total_steps > (double)goal_steps){
+                    goal_chart.clear();
+
+                    ArrayList<PieEntry> goal_entries2 = new ArrayList<>();
+
+                    //float overflo = (goal_steps - total_steps) * (-1);
+                    float overflo = total_steps;
+                    //float overflowGoal = total_steps - overflo;
+                    float overflowGoal = (goal_steps - overflo) * (-1); //extra steps
+
+                    goal_entries2.add(new PieEntry(overflowGoal, "Extra Steps"));
+                 //   goal_entries2.add(new PieEntry(, "New Goal"));
+
+                    PieDataSet data_set2 = new PieDataSet(goal_entries2, "");
+                    PieData goal_data2 = new PieData(data_set2);
+
+                    data_set2.setColors(ColorTemplate.JOYFUL_COLORS);
+                    goal_data2.setValueTextColor(Color.WHITE);
+                    goal_data2.setValueTextSize(16f);
+                    data_set2.setValueTextSize(16f);
+
+                    goal_chart.setData(goal_data2);
+                }
+
             }
 
             @Override
