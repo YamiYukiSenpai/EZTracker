@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <View
+        android:id="@+id/homeBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="#ea023b54"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/homeBar"
+        android:layout_width="0dp"
+        android:layout_height="50sp"
+        android:background="#afac0641"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/homeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/home_title"
+        android:textAllCaps="true"
+        android:textColor="#f7f7f7"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/homeBar"
+        app:layout_constraintEnd_toEndOf="@+id/homeBar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/homeBar"
+        app:layout_constraintTop_toTopOf="@+id/homeBar" />
+
+    <Button
+        android:id="@+id/homeSettings"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/settingsicon"
+        app:layout_constraintBottom_toBottomOf="@+id/homeBar"
+        app:layout_constraintEnd_toEndOf="@+id/homeBar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/homeBar" />
+
+    <TextView
+        android:id="@+id/welcomeHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/welcome"
+        android:textColor="#f7f7f7"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/barChart"
+        app:layout_constraintEnd_toEndOf="@+id/barChart"
+        app:layout_constraintStart_toStartOf="@+id/barChart"
+        app:layout_constraintTop_toBottomOf="@+id/homeBar"
+        app:layout_constraintVertical_bias="0.714" />
+
+    <TextView
+        android:id="@+id/home_monday"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:textColor="#f7f7f7"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/homeBackground"
+        app:layout_constraintEnd_toEndOf="@+id/homeBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeBar"
+        app:layout_constraintVertical_bias="0.18" />
+
+    <TextView
+        android:id="@+id/home_Tuesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:textColor="#f7f7f7"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/homeBackground"
+        app:layout_constraintEnd_toEndOf="@+id/homeBackground"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeBar"
+        app:layout_constraintVertical_bias="0.242" />
+
+    <TextView
+        android:id="@+id/home_Wednesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:textColor="#f7f7f7"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/homeBackground"
+        app:layout_constraintEnd_toEndOf="@+id/homeBackground"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeBar"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/home_thursday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:textColor="#f7f7f7"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/homeBackground"
+        app:layout_constraintEnd_toEndOf="@+id/homeBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeBar"
+        app:layout_constraintVertical_bias="0.36" />
+
+    <TextView
+        android:id="@+id/home_friday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:textColor="#f7f7f7"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/homeBackground"
+        app:layout_constraintEnd_toEndOf="@+id/homeBackground"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeBar"
+        app:layout_constraintVertical_bias="0.423" />
+
+    <TextView
+        android:id="@+id/home_saturday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:textColor="#f7f7f7"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/homeBackground"
+        app:layout_constraintEnd_toEndOf="@+id/homeBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeBar"
+        app:layout_constraintVertical_bias="0.483" />
+
+    <TextView
+        android:id="@+id/home_sunday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:textColor="#f7f7f7"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/homeBackground"
+        app:layout_constraintEnd_toEndOf="@+id/homeBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeBar"
+        app:layout_constraintVertical_bias="0.545" />
+
+    <TextView
+        android:id="@+id/percentSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text=""
+        android:textColor="#f7f7f7"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/goal_pieChart"
+        app:layout_constraintEnd_toEndOf="@+id/goal_pieChart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/goal_pieChart"
+        app:layout_constraintTop_toTopOf="@+id/goal_pieChart"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/goal_pieChart"
+        android:layout_width="320dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeBar"></com.github.mikephil.charting.charts.PieChart>
+
+    <TextView
+        android:id="@+id/goal_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:lines="2"
+        android:text=""
+        android:textAlignment="textEnd"
+        android:textColor="#f7f7f7"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/goal_pieChart"
+        app:layout_constraintEnd_toEndOf="@+id/goal_pieChart"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/goal_pieChart"
+        app:layout_constraintTop_toTopOf="@+id/goal_pieChart"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/goal_Header"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/weekly_goal"
+        android:textColor="#f7f7f7"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/goal_pieChart"
+        app:layout_constraintEnd_toEndOf="@+id/goal_pieChart"
+        app:layout_constraintStart_toStartOf="@+id/goal_pieChart"
+        app:layout_constraintTop_toBottomOf="@+id/homeBar" />
+
+    <Button
+        android:id="@+id/goalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="#ac0641"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/set_goal"
+        android:textColor="#f7f7f7"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/goal_pieChart"
+        app:layout_constraintEnd_toEndOf="@+id/goal_pieChart"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/goal_pieChart"
+        app:layout_constraintTop_toTopOf="@id/goal_pieChart"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="320dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeBar">
+
+    </com.github.mikephil.charting.charts.BarChart>
+
+
+
+</android.support.constraint.ConstraintLayout>
