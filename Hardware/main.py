@@ -15,6 +15,7 @@ from PIL import ImageFont
 import datetime
 import pyrebase
 import json
+import sys
 
 class EZdatabase:
     def __init__(self, email, password):
@@ -97,9 +98,8 @@ class StepDisplay(Display):
 class Accel:
     def __init__(self):
         self._accel_mag = LSM303(hires=False)
-        self._accel = self._accel_mag.read()
-        self._accel_x, self._accel_y = self._accel
-        # self._accel_z = 0
+        self._accel, self._mag = self._accel_mag.read()
+        self._accel_x, self._accel_y, self._accel_z = self._accel
 
     def get_x(self):
         return self._accel_x
@@ -111,9 +111,9 @@ class Accel:
         return self._accel_z
 
     def get_data_accel(self):
-        self._accel = self._accel_mag.read()
-        self._accel_x, self._accel_y = self._accel
-        return self._accel
+        self._accel, self._mag = self._accel_mag.read()
+        self._accel_x, self._accel_y, self._z = self._accel
+        return (self._accel, self._mag)
 
 
 class TouchSensor:
@@ -129,8 +129,10 @@ class TouchSensor:
         return self._cap_touch.touched()
 
 if (__name__ == "__main__"):
-    u_email = "konakonata@outlook.com"
-    u_pass = "password"
+    # u_email = "konakonata@outlook.com"
+    # u_pass = "password"
+    u_email = str(sys.argv[1])
+    u_pass = str(sys.argv[2])
     ez_db = EZdatabase(u_email, u_pass)
     accel = Accel()
     step_count = StepDisplay(0, -2)
