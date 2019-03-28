@@ -1,0 +1,1001 @@
+body{
+    margin:0;
+    background-image: url(back_final.jpg);
+    background-size:cover;
+    margin-left:auto;
+    margin-right:auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.Employee{
+	height: auto;
+	position :relative;
+	width: auto;
+}
+#NavBarFinal{
+	overflow: hidden;
+	background-color: black;
+	position: fixed;
+	top: 0;     
+	width: 100%;
+	z-index: 999;
+}
+#NavBarFinal2 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+}
+li {
+    float: left;
+}
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}   
+.dropdown {
+    display: inline-block;
+}   
+.dropdown-content {
+    overflow:hidden;
+    display: none;
+    position: fixed;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content #EmployLog{
+    float:right;
+}
+#EmployLog{
+    float:right;
+}
+HomeMain{
+    height:auto;
+    position:relative;
+    width: auto;
+}
+.HomeNav{
+    overflow: hidden;
+    background-color: black;
+    position: fixed;
+    top: -15;
+    width: 100%;
+    z-index: 999;
+}
+.HomeNav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 19px;
+}
+.HomeNav li2{
+    margin: 0 40px 0 0;
+    float: right;
+
+}
+.HomeNav log{
+    position: right;
+
+}
+.HomeNav a:hover{
+    background: white;
+    color: black;
+}
+.HomeBorder {
+    float: center;
+    position: relative;
+    top: 90px;
+    margin-bottom: -10em;
+    /* margin-bottom: auto; */
+    /* border: 2px solid #000; */
+    width: 80%;
+    height: auto%;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-bottom: auto; */
+    /* padding: 0; */
+    box-sizing: border-box;
+    /* box-shadow: 1px 1px 15px #1a1a1a; */
+    background-color: rgba(66, 82, 88, 0.918);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.HomeBorder h1{
+    text-shadow:
+    2px  2px 0 #000,
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000;
+    letter-spacing: 0.3px;
+    padding-top: 5px;
+    padding-left: 30px;
+    color: white;
+    float: left;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.HomeBorder hr{
+    width: 99.5%;
+    color: rgba(0, 0, 0, 0.548);
+
+}
+.HomeBorder2{
+    float: center;
+    position: relative;
+    top: 10px;
+    border: 1px solid #000;
+    width: 98%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    /* padding-bottom: -50px; */
+    /* box-sizing: border-box; */
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.842);
+    overflow: hidden;
+}
+.HomeBorder2 p2{
+    padding-right: 10px;
+    padding-left: 20px;
+    padding-top: 10px;
+    float: left;
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.HomeBorder2 p3{
+    padding-right: 50px;
+    padding-left: 20px;
+    padding-top: 10px;
+    float: right;
+    font-size: 16px;
+    word-spacing: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+.HomeBorder2 hr{
+    width: 100%;
+    position: relative;
+}
+.HomeBorder p4{
+    position: relative;
+    float: left;
+    padding-top: 70px;
+    margin-left: -200px;
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.HomeBorder p5{
+    padding-top: 60px;
+    margin-right: -400px;
+    float: right;
+    font-size: 16px;
+    word-spacing: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.HomeMain p1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50;
+    color:rgb(255, 255, 255);
+    letter-spacing: 0.5px;
+    float: center;
+    position: relative;
+    top: 60px;
+}
+.HomeImage{
+    float:left;
+    padding: 0 0 0 0;
+    /* background-size:cover; */
+    }
+.HomeSide{
+    top: 5px;
+    position: relative;
+    text-align: center;
+    float:center;
+    /* width:"500px"; */
+    /* height:"320px"; */
+    /* padding:0 500px 0 20px; */
+    /* text-align:left-side; */
+    font-family:Verdana;
+        
+    }  
+#Bottom{
+    position: relative;	
+    top: 340px;
+    bottom: 0;
+	background-color:black;
+    color:white;
+    /* bottom: 0; */
+    height: 75px;
+    margin: 0 auto;
+    width: 100%;
+    /* margin-top: 20px; */
+    border-radius:0px;
+    text-overflow: clip;
+}
+#Footerp2{
+    top: 3px;
+    position: relative; 
+    padding-right: 10px;
+    float:right;
+    font-size: 20px;
+	
+}
+#Footerp1{
+    top: 3px;
+    position: relative; 
+    padding-left: 10px;
+	float:left;
+	font-size: 20px;
+}
+#HomeLogo{
+    position: relative;
+    float:right;
+    width: 150px;
+    height: 75px;
+    margin: auto;
+    top:5px;
+    right: 20px;
+}
+.Feedback{
+	height: auto;
+	position :relative;
+	width: auto;
+}
+.FeedNav{
+    overflow: hidden;
+    background-color: black;
+    position: fixed;
+    top: -15;
+    width: 100%;
+    z-index: 999;
+}
+.FeedNav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 19px;
+    }
+.FeedNav li2{
+    margin: 0 40px 0 0;
+    float: right;
+    }
+.FeedNav log{
+    position: right;
+    }
+.FeedNav a:hover{
+    background: white;
+    color: black;
+    }
+.FeedBorder {
+    float: center;
+    position: relative;
+    top: 90px;
+    margin-bottom: -5em;
+    /* margin-bottom: auto; */
+    /* border: 2px solid #000; */
+    width: 80%;
+    height: auto%;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-bottom: auto; */
+    /* padding: 0; */
+    box-sizing: border-box;
+    /* box-shadow: 1px 1px 15px #1a1a1a; */
+    background-color: rgba(66, 82, 88, 0.918);
+    border-radius: 10px;
+    overflow: hidden;
+    }
+.FeedBorder h1{
+    text-shadow:
+    2px  2px 0 #000,
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000;
+    letter-spacing: 0.3px;
+    padding-top: 5px;
+    padding-left: 30px;
+    color: white;
+    float: left;
+    font-family:Arial, Helvetica, sans-serif;
+    }
+.FeedBorder hr{
+        width: 99.5%;
+        color: rgba(0, 0, 0, 0.548);
+
+    }
+.FeedBorder2{
+        float: center;
+        position: relative;
+        top: 10px;
+        border: 1px solid #000;
+        width: 98%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 25px;
+        /* padding-bottom: -50px; */
+        /* box-sizing: border-box; */
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.842);
+        overflow: hidden;
+    }
+.FeedBorder2 p2{
+        padding-right: 10px;
+        padding-left: 20px;
+        padding-top: 10px;
+        float: left;
+        font-size: 16px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+.FeedBorder2 p3{
+        padding-right: 50px;
+        padding-left: 20px;
+        padding-top: 10px;
+        float: right;
+        font-size: 16px;
+        word-spacing: 10px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-weight: bold;
+    }
+.FeedBorder2 hr{
+        width: 100%;
+        position: relative;
+    }
+.FeedBorder p4{
+        position: relative;
+        float: left;
+        padding-top: 70px;
+        margin-left: -200px;
+        font-size: 16px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+.FeedBorder p5{
+        padding-top: 60px;
+        margin-right: -400px;
+        float: right;
+        font-size: 16px;
+        word-spacing: 50px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+.Feedback p1{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18;
+        color:rgb(255, 255, 255);
+        letter-spacing: 0.5px;
+    }
+.dropdown-content a2 {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.dropdown-content a2:hover
+    {
+    background-color: #f1f1f1
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+#Greet{
+    font-size: 20px;
+}
+#FeedComment{
+    margin-top: -10px;
+    margin-left: 20px;
+    float:none;
+    width: 95%;
+    height: 20%;
+    resize: none;
+    position: relative;
+}
+#FeedReset{
+    width: 30%;
+    height: 5%;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right:auto;
+}
+#FeedSubmit{
+
+    width: 30%;
+    height: 5%;
+}
+#Questions{
+    position: relative;
+    float:left;
+    font-size: 18px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.Survey{
+    float: center;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:auto;
+    margin-bottom:auto;
+}
+.Survey #buttonz{
+    float: auto;
+    padding-left: center;
+    position: relative;
+    margin-bottom:auto;
+    margin-top:auto;
+    margin-left: 150px;
+    margin-right:auto;
+}
+#Answers{
+    position: relative;
+    float: right;
+}
+#o5{
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+#FeedTable{
+    padding-left: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    float:left;
+    width: auto;
+    height: auto;
+}
+#FeedBottom{ 
+    position: relative;	
+    top: 273px;
+    /* padding-left: -10px; */
+    /* padding-right: -10px; */
+    bottom: 0;
+	background-color:black;
+    color:white;
+    /* bottom: 0; */
+    height: 75px;
+    margin: 0 auto;
+    width: 100%;
+    /* margin-top: 20px; */
+    border-radius:0px;
+    text-overflow: clip;
+}
+#FeedFooterp2{
+    top: 3px;
+    position: relative; 
+    padding-right: 10px;
+    float:right;
+    font-size: 20px;
+	
+}
+#FeedFooterp1{
+    top: 3px;
+    position: relative; 
+    padding-left: 10px;
+	float:left;
+	font-size: 20px;
+}
+#FeedLogo{
+    position: relative;
+    float:right;
+    width: 150px;
+    height: 75px;
+    margin: auto;
+    top:5px;
+    right: 20px;
+}
+li a, .dropbtn {
+display: inline-block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+background-color: red;
+}
+
+li.dropdown {
+display: inline-block;
+}
+
+.dropdown-content {
+overflow:hidden;
+display: none;
+position: fixed;
+background-color: #f9f9f9;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 999;
+}
+
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+display: block;
+}
+.dropdown-content #EmployLog{
+float:right;
+}
+.AboutUsV2{
+	height: auto;
+	position :relative;
+	width: auto;
+}.Feedback{
+	height: auto;
+	position :relative;
+	width: auto;
+}
+.AboutBorder {
+    float: center;
+    position: relative;
+    top: 90px;
+    margin-bottom: -5em;
+    /* margin-bottom: auto; */
+    /* border: 2px solid #000; */
+    width: 80%;
+    height: auto%;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-bottom: auto; */
+    /* padding: 0; */
+    box-sizing: border-box;
+    /* box-shadow: 1px 1px 15px #1a1a1a; */
+    background-color: rgba(66, 82, 88, 0.918);
+    border-radius: 10px;
+    overflow: hidden;
+    }
+.AboutBorder h1{
+    text-shadow:
+    2px  2px 0 #000,
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000;
+    letter-spacing: 0.3px;
+    padding-top: 5px;
+    padding-left: 30px;
+    color: white;
+    float: left;
+    font-family:Arial, Helvetica, sans-serif;
+    }
+.AboutBorder hr{
+        width: 99.5%;
+        color: rgba(0, 0, 0, 0.548);
+
+    }
+.AboutUsButton{
+        float: center;
+        position: relative;
+        top: 10px;
+        border: 1px solid #000;
+        width: 98%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 25px;
+        /* padding-bottom: -50px; */
+        /* box-sizing: border-box; */
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.842);
+        overflow: hidden;
+    }
+#AboutTable{
+    float: none;
+    position: relative;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.AboutUsButton p2{
+        padding-right: 10px;
+        padding-left: 20px;
+        padding-top: 10px;
+        float: center;
+        font-size: 16px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+.AboutUsButton p3{
+        padding-right: 50px;
+        padding-left: 20px;
+        padding-top: 10px;
+        float: right;
+        font-size: 16px;
+        word-spacing: 10px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-weight: bold;
+    }
+.AboutUsButton hr{
+        width: 100%;
+        position: relative;
+    }
+.AboutBorder p4{
+        position: relative;
+        float: left;
+        padding-top: 70px;
+        margin-left: -200px;
+        font-size: 16px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+#o6{
+    float: left;
+    padding-left: 0em;
+    padding-right: 0em;
+    border: none;
+    background-color: #f4501e
+    padding: 15px 32px;
+    /* text-align: center; */
+    text-decoration: none;
+    margin-left:auto;
+    margin-right:auto;
+    font-size: 16px;
+}
+#AboutBottom{ 
+    position: relative;	
+    top: 300px;
+    /* padding-left: -10px; */
+    /* padding-right: -10px; */
+    bottom: 0;
+	background-color:black;
+    color:white;
+    /* bottom: 0; */
+    height: 75px;
+    margin: 0 auto;
+    width: 100%;
+    /* margin-top: 20px; */
+    border-radius:0px;
+    text-overflow: clip;
+}
+#AboutFooterp2{
+    top: 3px;
+    position: relative; 
+    padding-right: 10px;
+    float:right;
+    font-size: 20px;
+	
+}
+#AboutFooterp1{
+    top: 3px;
+    position: relative; 
+    padding-left: 10px;
+	float:left;
+	font-size: 20px;
+}
+#imageAboutUs{
+
+    float: none;
+    position: relative;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.AboutPlace{
+    float: center;
+    position: relative;
+    top: 0px;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+#AboutMe{  
+    
+    float:right;
+    position: relative;
+}
+
+/*  CSS style for login page  */
+.loginBody {
+    font-family: "Microsoft JhengHei UI Light", Trebuchet MS, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    margin-left: auto;
+    margin-top: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: 103%;
+    padding-top: 70px;
+}
+#loginWrapper {
+    height: auto;
+    width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-style: solid;
+    border-color: #737373;
+    border-width: 0px;
+    border-radius: 15px;
+    padding: 20px;	
+    box-shadow: 0px 1px 15px #1a1a1a;
+    opacity: 1;	;
+}
+.button {
+    display: align-middle ;
+    border-radius: 5px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 15px;
+    margin-left: 30px;
+}
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.button:hover span {
+    padding-right: 25px;
+}
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+.error{
+color: red;
+
+}
+#uname, #password, #logintype{
+    width: 350px;
+    padding: 8px 8px;
+    margin: 2px 0;	
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#inside{
+    padding-left: 30px;
+    padding-right:0px;
+    padding-top: 15px;
+    padding-bottom: 0px;	
+}
+#signuplink{
+    padding-left: 280px;
+    margin-top: 0;
+}
+#loginInstructions{
+margin-top: 0;
+font-size: 10px;
+}
+
+/* ***********************************************               CSS for sign up page     *****************************************************           */
+
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=password], select[type=logintype] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus, select[type=logintype]:focus{
+    background-color: #ddd;
+    outline: none;
+}
+
+
+/* Style the horizontal ruler */
+hr {
+    border: 1px solid #000000;
+    margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;	
+    width: 100%;
+    opacity: 0.9;
+}
+
+button:hover {
+    opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+    margin-left:50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    margin-bottom:50px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+   /* overflow: auto;  /* overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5d;
+
+}
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+    
+}
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+#aboutJonas{
+    margin-right: 4em;
+    float: none;
+    text-align: center;
+    font-size: 20px;
+}
+#imageaboutPerson{
+    float:left;
+    position: relative;
+    height: 60%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+#aboutTarun{
+    margin-left: 2em;
+    margin-right: 2em;
+    float: none;
+    text-align: center;
+    font-size: 20px;
+}
+#imageaboutTarun{
+    margin-bottom: 1em;
+    float:left;
+    position: relative;
+    height: 50%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+#loginSubmit{
+    float:none;
+    position:relative;
+    margin-left:70px;
+    margin-right:auto;
+}
+#aboutJasleen{
+    margin-left: 2em;
+    margin-right: 2em;
+    float: none;
+    text-align: center;
+    font-size: 20px;
+}
+#imageaboutJasleen{
+    margin-bottom: 1em;
+    float:left;
+    position: relative;
+    height: 50%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+#imageaboutRyan{
+    margin-bottom: 1em;
+    float:left;
+    position: relative;
+    height: 50%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+#aboutRyan{
+    margin-left: 2em;
+    margin-right: 2em;
+    float: none;
+    text-align: center;
+    font-size: 20px;
+}
+#aboutDelroy{
+    margin-left: 2em;
+    margin-right: 2em;
+    float: none;
+    text-align: center;
+    font-size: 20px;
+}
+#imageaboutDelroy{
+    margin-bottom: 1em;
+    float:left;
+    position: relative;
+    height: 50%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+*{
+	box-sizing: border-box;
+	
+}
+
+
+
+    
