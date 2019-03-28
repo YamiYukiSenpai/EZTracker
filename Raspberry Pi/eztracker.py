@@ -16,6 +16,8 @@ import datetime
 import pyrebase
 import json
 import sys
+import subprocess
+from requests.exceptions import HTTPError
 
 class EZdatabase:
     def __init__(self, email, password):
@@ -57,6 +59,8 @@ class Display:
         self._empty = self._draw.rectangle((0, 0, self._width, self._height),
                                            outline=0, fill=0)
         self._font = ImageFont.load_default()
+        self._font_heading = ImageFont.truetype(font="/usr/share/fonts/ubuntu/Ubuntu-B.ttf", size=20)
+        self._font_body = ImageFont.truetype(font="/usr/share/fonts/ubuntu/UbuntuMono-R.ttf", size=50)
 
     def _get_draw(self):
         return self._draw
@@ -73,6 +77,14 @@ class Display:
         self._disp.clear()
         self._disp.display()
 
+    def display_message(self, message, index):
+        self._draw.rectangle((0, 0, self._width, self._height),
+                             outline=0, fill=0)
+        self._draw.text((0, self._top + index), message, font=self._font_heading, fill=255)
+        self._disp.image(self._image)
+        self._disp.display()
+        return True
+
 
 class StepDisplay(Display):
     def __init__(self, steps, padding):
@@ -83,9 +95,9 @@ class StepDisplay(Display):
         self._draw.rectangle((0, 0, self._width, self._height),
                              outline=0, fill=0)
 
-        self._draw.text((0, self._top), "Steps", font=self._font, fill=255)
-        self._draw.text((0, self._top + 8), str(self._steps),
-                        font=self._font, fill=255)
+        self._draw.text((0, self._top), "STEPS", font=self._font_heading, fill=255)
+        self._draw.text((0, self._top + 10), str(self._steps),
+                        font=self._font_body, fill=255)
 
         self._disp.image(self._image)
         self._disp.display()
@@ -129,18 +141,31 @@ class TouchSensor:
         return self._cap_touch.touched()
 
 if (__name__ == "__main__"):
-    # u_email = "konakonata@outlook.com"
-    # u_pass = "password"
-    u_email = str(sys.argv[1])
-    u_pass = str(sys.argv[2])
-    ez_db = EZdatabase(u_email, u_pass)
+    u_email = "konakonata@outlook.com"
+    u_pass = "password"
+    # u_email = str(sys.argv[1])
+    # u_pass = str(sys.argv[2])
+    try:
+        ez_db = EZdatabase(u_email, u_pass)
+    except HTTPError:
+        login_status = open("error.txt", "w")
+        login_status.write("1")
+        login_status.close()
+        sys.exit()
+    else:
+        login_status = open("error.txt", "w")
+        login_status.write("0")
+        login_status.close()
     accel = Accel()
+    disp = Display(-2)
     step_count = StepDisplay(0, -2)
     touch = TouchSensor(128, 64)
     num_steps = 0
     update_steps = False
     step_display = False
     accel_sensitivity = 50
+    network = False
+    pi_direct_wlan = False
     x = 0
     y = 0
     z = 0
@@ -150,6 +175,7 @@ if (__name__ == "__main__"):
 
     test = False
     test2 = True
+    test3 = True
 
     step_count.display_refresh()
 
@@ -183,7 +209,8 @@ if (__name__ == "__main__"):
                     print("X = {0}, Y = {1}".format(x, y))
                 num_steps += 1
                 step_count.update_count(num_steps)
-                print('{0} steps'.format(num_steps))
+                if (test2 is True):
+                    print('{0} steps'.format(num_steps))
                 ez_db.update_steps(num_steps)
 
         if (test is True):
@@ -196,16 +223,30 @@ if (__name__ == "__main__"):
             pin_bit = 1 << i
 
             if current_touched & pin_bit:
-                print('{0} touched!'.format(i))
+                if (test3 is True):
+                    print('{0} touched!'.format(i))
                 if (i == 0):
                     if (step_display is False):
                         step_display = True
                     else:
                         step_display = False
-                if (i == 1):
+                if (i == 2):
                     if (update_steps is False):
                         update_steps = True
                     else:
                         update_steps = False
-
+                if (i == 8):
+                    if (pi_direct_wlan is False):
+                        disp("Activating WiFi direct", 0)
+                        subprocess.call("sudo ifdown wlan0")
+                        subprocess.call("sudo ifup wlan0")
+                        wlan_dir = subprocess.call("wpa_cli -ip2p-dev-wlan0 p2p_group_add persistent=0")
+                        if (wlan_dir == "OK"):
+                            disp("Please connect to DIRECT-PB-RPi3", 2)
+                        else:
+                            disp("Error", 2)
+                    else:
+                        disp("Deactivating WiFi direct", 0)
+                        subprocess.call("")
         time.sleep(0.5)
+
