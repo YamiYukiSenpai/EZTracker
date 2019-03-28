@@ -57,6 +57,8 @@ class Display:
         self._empty = self._draw.rectangle((0, 0, self._width, self._height),
                                            outline=0, fill=0)
         self._font = ImageFont.load_default()
+        self._font_heading = ImageFont.truetype(font="/usr/share/fonts/ubuntu/Ubuntu-B.ttf", size=20)
+        self._font_body = ImageFont.truetype(font="/usr/share/fonts/ubuntu/UbuntuMono-R.ttf", size=50)
 
     def _get_draw(self):
         return self._draw
@@ -83,9 +85,9 @@ class StepDisplay(Display):
         self._draw.rectangle((0, 0, self._width, self._height),
                              outline=0, fill=0)
 
-        self._draw.text((0, self._top), "Steps", font=self._font, fill=255)
-        self._draw.text((0, self._top + 8), str(self._steps),
-                        font=self._font, fill=255)
+        self._draw.text((0, self._top), "STEPS", font=self._font_heading, fill=255)
+        self._draw.text((0, self._top + 10), str(self._steps),
+                        font=self._font_body, fill=255)
 
         self._disp.image(self._image)
         self._disp.display()
@@ -129,10 +131,10 @@ class TouchSensor:
         return self._cap_touch.touched()
 
 if (__name__ == "__main__"):
-    # u_email = "konakonata@outlook.com"
-    # u_pass = "password"
-    u_email = str(sys.argv[1])
-    u_pass = str(sys.argv[2])
+    u_email = "konakonata@outlook.com"
+    u_pass = "password"
+    # u_email = str(sys.argv[1])
+    # u_pass = str(sys.argv[2])
     ez_db = EZdatabase(u_email, u_pass)
     accel = Accel()
     step_count = StepDisplay(0, -2)
@@ -141,6 +143,7 @@ if (__name__ == "__main__"):
     update_steps = False
     step_display = False
     accel_sensitivity = 50
+    network = False
     x = 0
     y = 0
     z = 0
@@ -202,10 +205,11 @@ if (__name__ == "__main__"):
                         step_display = True
                     else:
                         step_display = False
-                if (i == 1):
+                if (i == 2):
                     if (update_steps is False):
                         update_steps = True
                     else:
                         update_steps = False
-
+                #if (i == 3)
         time.sleep(0.5)
+
