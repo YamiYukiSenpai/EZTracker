@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -49,7 +50,9 @@ import android.preference.PreferenceManager;
 
 import org.w3c.dom.Text;
 
+import java.math.RoundingMode;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -72,6 +75,19 @@ public class HomeActivity extends AppCompatActivity {
     private TextView currentPercent;
     private Button goalButton;
     private TextView stepsReal;
+    private TextView valTest;
+
+    private String dbHeight;
+    private String dbWeight;
+
+    float realHeight;
+    float realWeight;
+    float calPerMile;
+    float stride;
+    float stepPerMile;
+    float calPerStep;
+    int weekSteps;
+    float weeklyCals;
 
     int goal_steps;
     int total_steps;
@@ -86,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         //getting date for bar graph manipulation
-        Calendar calendar = Calendar.getInstance();
+        final Calendar calendar = Calendar.getInstance();
         final int currentDay = calendar.get(Calendar.DAY_OF_WEEK);
 
         //initialize database and views
@@ -102,6 +118,40 @@ public class HomeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String realName = dataSnapshot.child("name").getValue(String.class);
                 name.setText(realName+ "'s " + getString(R.string.home_dailySteps));
+
+                dbHeight = dataSnapshot.child("height").getValue(String.class);
+                realHeight = Float.parseFloat(dbHeight);
+
+                dbWeight = dataSnapshot.child("weight").getValue(String.class);
+                //convert kg to lbs
+                realWeight = Float.parseFloat(dbWeight) * (float)2.20462262185;
+
+                //caloric formula
+                calPerMile = (float)0.57 * realWeight;
+                stride = realHeight * (float)0.414;
+                stepPerMile = (float)160934.4 / stride;
+                calPerStep = calPerMile / stepPerMile;
+                //Log.d("MyTag", "valu:" + calPerStep);
+                int monday = dataSnapshot.child("steps").child("monday").getValue(Integer.class);
+                int tuesday = dataSnapshot.child("steps").child("tuesday").getValue(Integer.class);
+                int wednesday = dataSnapshot.child("steps").child("wednesday").getValue(Integer.class);
+                int thursday = dataSnapshot.child("steps").child("thursday").getValue(Integer.class);
+                int friday = dataSnapshot.child("steps").child("friday").getValue(Integer.class);
+                int saturday = dataSnapshot.child("steps").child("saturday").getValue(Integer.class);
+                int sunday = dataSnapshot.child("steps").child("sunday").getValue(Integer.class);
+                //Log.d("MyTag", "monday:" + monday);
+                weekSteps = monday + tuesday + wednesday + thursday + friday + saturday + sunday;
+
+                weeklyCals = weekSteps * calPerStep;
+
+                double roundCals = (double)Math.round(weeklyCals * 10) / 10;
+                Log.d("MyTag", "total:" + roundCals);
+
+
+                // weekCalories = calPerStep;
+
+
+                valTest.setText(getString(R.string.weekCal)+"\n"+ roundCals);
 
             }
 
@@ -148,6 +198,8 @@ public class HomeActivity extends AppCompatActivity {
                 barChart.getAxisLeft().setAxisMinimum(0f);
                 barChart.setScaleEnabled(false);
                 barChart.setTouchEnabled(false);
+
+
 
                 ArrayList<BarEntry> barEntries = new ArrayList<>();
 
@@ -237,7 +289,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
 
                 BarDataSet dataSet = new BarDataSet(barEntries, "Steps Taken");
-                dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
 
                 BarData barData = new BarData(dataSet);
                 barData.setValueTextColor(Color.WHITE);
@@ -331,7 +383,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 data_set.setColors(ColorTemplate.JOYFUL_COLORS);
                 data_set.setFormSize(12f);
-                goal_data.setValueTextColor(Color.WHITE);
+                goal_data.setValueTextColor(Color.BLACK);
                 goal_data.setValueTextSize(14f);
 
                 goal_chart.setData(goal_data);
@@ -356,7 +408,7 @@ public class HomeActivity extends AppCompatActivity {
                     PieDataSet data_set2 = new PieDataSet(goal_entries2, "");
                     PieData goal_data2 = new PieData(data_set2);
 
-                    data_set2.setColors(ColorTemplate.JOYFUL_COLORS);
+                    data_set2.setColors(ColorTemplate.MATERIAL_COLORS);
                     goal_data2.setValueTextColor(Color.WHITE);
                     data_set2.setFormSize(18f);
                     goal_data2.setValueTextSize(16f);
@@ -449,6 +501,7 @@ public class HomeActivity extends AppCompatActivity {
         barChart = findViewById(R.id.barChart);
         goal_chart = findViewById(R.id.goal_pieChart);
         goalButton = findViewById(R.id.goalButton);
+        valTest = findViewById(R.id.tester);
     }
 
     public class MyXAxisValueFormatter implements IAxisValueFormatter{

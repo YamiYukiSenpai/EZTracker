@@ -119,4 +119,5 @@
     <string name="update_entDob">Entrez une date de naissance</string>
     <string name="bar_RealSteps">Pas</string>
     <string name="goal_toast">Toutes nos félicitations! Vous avez atteint votre objectif! Définir un autre!</string>
+    <string name="weekCal">Semaine Cal</string>
 </resources>
