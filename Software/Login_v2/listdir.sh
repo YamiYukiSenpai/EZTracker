@@ -1,4 +1,2 @@
 #!/bin/bash
-touch hello.txt
-
-echo $1 $2 | tee hello.txt
+exec main.py $1 $2

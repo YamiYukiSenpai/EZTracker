@@ -11,8 +11,14 @@
 	</head>	
 <body class="loginBody" id="runningMan" background="background2.jpg">	
 <?php
+	
+	$email = $_POST['email'];
+	$password = $_POST['passwd'];
+	
+	$output = shell_exec("./runEz.sh $email $password");	
+	
 	$error = shell_exec("cat error.txt");
-
+	
 	if($error == 1){
 		header("Location: fail.php");
 		exit();
@@ -21,12 +27,12 @@
 //		header("Location: success.php");
 //		exit();
 //	}
-	$email = $_POST['email'];
-	$password = $_POST['passwd'];
+	//$email = $_POST['email'];
+	//$password = $_POST['passwd'];
 
 //	echo "{$email} ";
 	//echo "{$password}";
-	$output = shell_exec("./listdir.sh $email $password");
+	//$output = shell_exec("./listdir.sh $email $password");
 ?>
  
  		<center><h1 style="color: white;"></h1></center>
