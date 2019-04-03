@@ -1,2 +1,2 @@
 #!/bin/bash
-exec main.py $1 $2
+exec /home/eztracker/main.py $1 $2
