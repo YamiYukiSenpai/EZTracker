@@ -16,6 +16,7 @@ import datetime
 import pyrebase
 import json
 import sys
+import os
 import subprocess
 from requests.exceptions import HTTPError
 
@@ -61,6 +62,9 @@ class Display:
         self._font = ImageFont.load_default()
         self._font_heading = ImageFont.truetype(font="/usr/share/fonts/ubuntu/Ubuntu-B.ttf", size=20)
         self._font_body = ImageFont.truetype(font="/usr/share/fonts/ubuntu/UbuntuMono-R.ttf", size=50)
+        self._font_status = ImageFont.truetype(font="/usr/share/fonts/ubuntu/UbuntuMono-R.ttf", size=15)
+        self._draw.rectangle((0, 0, self._width, self._height),
+                             outline=0, fill=0)
 
     def _get_draw(self):
         return self._draw
@@ -72,39 +76,54 @@ class Display:
         self._disp.clear()
         self._disp.display()
 
-    def display_refresh(self):
+    def refresh(self):
         self._disp.begin()
         self._disp.clear()
         self._disp.display()
-
-    def display_message(self, message, index):
-        self._draw.rectangle((0, 0, self._width, self._height),
-                             outline=0, fill=0)
-        self._draw.text((0, self._top + index), message, font=self._font_heading, fill=255)
-        self._disp.image(self._image)
+    
+    def display(self):
         self._disp.display()
+
+    def get_height(self):
+        return self._height
+
+    def display_message(self, message, index, body=1):
+        # self._draw.rectangle((0, 0, self._width, self._height),
+        #                      outline=0, fill=0)
+        if (body == 0):
+            self._draw.text((0, self._top + index), message, font=self._font_body, fill=255)
+        else:
+            self._draw.text((0, self._top + index), message, font=self._font_heading, fill=255)
+        self._disp.image(self._image)
+        #self._disp.display()
         return True
 
 
 class StepDisplay(Display):
     def __init__(self, steps, padding):
         self._steps = steps
+        self._status = False
         Display.__init__(self, padding)
 
-    def start_display_count(self):
+    def start_display_count(self, stop=0):
         self._draw.rectangle((0, 0, self._width, self._height),
                              outline=0, fill=0)
 
         self._draw.text((0, self._top), "STEPS", font=self._font_heading, fill=255)
         self._draw.text((0, self._top + 10), str(self._steps),
                         font=self._font_body, fill=255)
-
+        self._draw.text((0, self._bottom - 18), str(self._status),
+                        font=self._font_status, fill=255)
         self._disp.image(self._image)
         self._disp.display()
         return True
 
     def update_count(self, count):
         self._steps = count
+    
+    def status(self, curr_status=None):
+        if (curr_status is not None):
+            self._status = curr_status
 
 
 class Accel:
@@ -146,6 +165,17 @@ if (__name__ == "__main__"):
     # u_email = str(sys.argv[1])
     # u_pass = str(sys.argv[2])
     try:
+        lock = open(".~ezlock", 'r')
+    except OSError:
+        lock = open(".~ezlock", 'w')
+        lock.write("Please don't edit this or whatnot")
+        lock.close()
+    else:
+        login_status = open("error.txt", "w")
+        login_status.write("2")
+        login_status.close()
+        sys.exit()
+    try:
         ez_db = EZdatabase(u_email, u_pass)
     except HTTPError:
         login_status = open("error.txt", "w")
@@ -153,7 +183,7 @@ if (__name__ == "__main__"):
         login_status.close()
         sys.exit()
     else:
-        login_status = open("error.txt", "w")
+        login_status = open("/var/www/html/error.txt", "w")
         login_status.write("0")
         login_status.close()
     accel = Accel()
@@ -163,7 +193,7 @@ if (__name__ == "__main__"):
     num_steps = 0
     update_steps = False
     step_display = False
-    accel_sensitivity = 50
+    accel_sensitivity = 160
     network = False
     pi_direct_wlan = False
     x = 0
@@ -177,7 +207,7 @@ if (__name__ == "__main__"):
     test2 = True
     test3 = True
 
-    step_count.display_refresh()
+    step_count.refresh()
 
     while True:
         current_touched = touch.last_touch()
@@ -192,8 +222,6 @@ if (__name__ == "__main__"):
         if (update_steps is True):
             data_accel, data_mag = accel.get_data_accel()
             new_x, new_y, new_z = data_accel
-
-            # if ((x != new_x) or (y != new_y)):
             if (((x > (new_x + accel_sensitivity)) or
                  (x < (new_x - accel_sensitivity))) or
                 ((y > (new_y + accel_sensitivity)) or
@@ -213,12 +241,6 @@ if (__name__ == "__main__"):
                     print('{0} steps'.format(num_steps))
                 ez_db.update_steps(num_steps)
 
-        if (test is True):
-            step_count.start_display_count()
-            num_steps += 1
-            step_count.update_count(num_steps)
-            print('{0} steps'.format(num_steps))
-
         for i in range(12):
             pin_bit = 1 << i
 
@@ -235,18 +257,25 @@ if (__name__ == "__main__"):
                         update_steps = True
                     else:
                         update_steps = False
+                    step_count.status(update_steps)
                 if (i == 8):
-                    if (pi_direct_wlan is False):
-                        disp("Activating WiFi direct", 0)
-                        subprocess.call("sudo ifdown wlan0")
-                        subprocess.call("sudo ifup wlan0")
-                        wlan_dir = subprocess.call("wpa_cli -ip2p-dev-wlan0 p2p_group_add persistent=0")
-                        if (wlan_dir == "OK"):
-                            disp("Please connect to DIRECT-PB-RPi3", 2)
-                        else:
-                            disp("Error", 2)
-                    else:
-                        disp("Deactivating WiFi direct", 0)
-                        subprocess.call("")
+                    disp.refresh()
+                    disp.display_message("Program closed", index=0)
+                    disp.display()
+                    os.remove(".~ezlock")
+                    os.remove("error.txt")
+                    sys.exit()
+                    # if (pi_direct_wlan is False):
+                    #     disp("Activating WiFi direct", 0)
+                    #     subprocess.call("sudo ifdown wlan0")
+                    #     subprocess.call("sudo ifup wlan0")
+                    #     wlan_dir = subprocess.call("wpa_cli -ip2p-dev-wlan0 p2p_group_add persistent=0")
+                    #     if (wlan_dir == "OK"):
+                    #         disp("Please connect to DIRECT-PB-RPi3", 2)
+                    #     else:
+                    #         disp("Error", 2)
+                    # else:
+                    #     disp("Deactivating WiFi direct", 0)
+                    #     subprocess.call("")
         time.sleep(0.5)
 
