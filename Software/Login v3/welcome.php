@@ -10,7 +10,35 @@
 		</style>
 	</head>	
 <body class="loginBody" id="runningMan" background="background2.jpg">	
+<?php
+	
+	$email = $_POST['email'];
+	$password = $_POST['passwd'];
+	
+	$output = shell_exec("sudo bash runEz.sh $email $password &");	
+	
+	$error = shell_exec("cat error.txt");
+	
+	if($error == 1){
+		header("Location: fail.php");
+		exit();
+	}
+	elseif($error == 2){
+		header("Location: error.html");
+		exit();
+	}
+	elseif($error == 0)
+	{
+		header("Location: success.html");
+		exit();
+	}
+	else
+	{
+		header("Location: error.html");
+		exit();
+	}
 
+?>	
  
  		<center><h1 style="color: white;"></h1></center>
 	
