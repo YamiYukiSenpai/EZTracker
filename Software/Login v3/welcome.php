@@ -15,7 +15,7 @@
 	$email = $_POST['email'];
 	$password = $_POST['passwd'];
 	
-	$output = shell_exec("sudo bash runEz.sh $email $password &");	
+	$output = shell_exec("sudo python3 eztracker.py $email $password &");	
 	
 	$error = shell_exec("cat error.txt");
 	
@@ -37,7 +37,7 @@
 		header("Location: error.html");
 		exit();
 	}
-
+	
 ?>	
  
  		<center><h1 style="color: white;"></h1></center>
