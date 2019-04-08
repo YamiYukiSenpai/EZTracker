@@ -65,6 +65,7 @@ class Display:
         self._font_status = ImageFont.truetype(font="/usr/share/fonts/ubuntu/UbuntuMono-R.ttf", size=15)
         self._draw.rectangle((0, 0, self._width, self._height),
                              outline=0, fill=0)
+        self._disp.begin()
 
     def _get_draw(self):
         return self._draw
@@ -77,9 +78,12 @@ class Display:
         self._disp.display()
 
     def refresh(self):
-        self._disp.begin()
+        #self._disp.begin()
         self._disp.clear()
         self._disp.display()
+
+    def reset(self):
+        self._disp.reset()
     
     def display(self):
         self._disp.display()
@@ -87,9 +91,12 @@ class Display:
     def get_height(self):
         return self._height
 
-    def display_message(self, message, index, body=1):
+    def display_message(self, message, index, size=None, body=1):
         # self._draw.rectangle((0, 0, self._width, self._height),
         #                      outline=0, fill=0)
+
+        if (size is not None):
+            self._font_body = ImageFont.truetype(font="/usr/share/fonts/ubuntu/UbuntuMono-R.ttf", size=size)
         if (body == 0):
             self._draw.text((0, self._top + index), message, font=self._font_body, fill=255)
         else:
@@ -102,7 +109,7 @@ class Display:
 class StepDisplay(Display):
     def __init__(self, steps, padding):
         self._steps = steps
-        self._status = False
+        self._status = "Stopped"
         Display.__init__(self, padding)
 
     def start_display_count(self, stop=0):
@@ -122,8 +129,10 @@ class StepDisplay(Display):
         self._steps = count
     
     def status(self, curr_status=None):
-        if (curr_status is not None):
-            self._status = curr_status
+        if (curr_status is True):
+            self._status = "Running..."
+        else:
+            self._status = "Stopped"
 
 
 class Accel:
@@ -160,10 +169,12 @@ class TouchSensor:
         return self._cap_touch.touched()
 
 if (__name__ == "__main__"):
-    u_email = "konakonata@outlook.com"
-    u_pass = "password"
-    # u_email = str(sys.argv[1])
-    # u_pass = str(sys.argv[2])
+    # u_email = "konakonata@outlook.com"
+    # u_pass = "password"
+    u_email = str(sys.argv[1])
+    u_pass = str(sys.argv[2])
+    disp = Display(-2)
+    auth_disp = Display(-2)
     try:
         lock = open(".~ezlock", 'r')
     except OSError:
@@ -176,20 +187,31 @@ if (__name__ == "__main__"):
         login_status.close()
         sys.exit()
     try:
+        auth_disp.display_message("Validating...", index=0, size=20)
+        auth_disp.display()
         ez_db = EZdatabase(u_email, u_pass)
     except HTTPError:
+        auth_disp.reset()
+        auth_disp.refresh()
+        auth_disp.display_message("Wrong", index=20, size=20)
+        auth_disp.display_message("password", index=40, size=20)
+        auth_disp.display()
         login_status = open("error.txt", "w")
         login_status.write("1")
         login_status.close()
+        os.remove(".~ezlock")
         sys.exit()
     else:
+        auth_disp.refresh()
+        auth_disp.display_message("Success!", index=20, size=25)
+        auth_disp.display()
         login_status = open("/var/www/html/error.txt", "w")
         login_status.write("0")
         login_status.close()
+    disp.refresh()
     accel = Accel()
-    disp = Display(-2)
     step_count = StepDisplay(0, -2)
-    touch = TouchSensor(128, 64)
+    touch = TouchSensor(255, 255)
     num_steps = 0
     update_steps = False
     step_display = False
@@ -259,11 +281,14 @@ if (__name__ == "__main__"):
                         update_steps = False
                     step_count.status(update_steps)
                 if (i == 8):
+                    # disp.reset()
+                    # disp.clear()
                     disp.refresh()
-                    disp.display_message("Program closed", index=0)
+                    disp.display_message("Program", index=0)
+                    disp.display_message("closed", index=20)
                     disp.display()
                     os.remove(".~ezlock")
-                    os.remove("error.txt")
+                    # os.remove("error.txt")
                     sys.exit()
                     # if (pi_direct_wlan is False):
                     #     disp("Activating WiFi direct", 0)
