@@ -66,24 +66,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/homeBar" />
 
-        <TextView
-            android:id="@+id/welcomeHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="@string/welcome"
-            android:textColor="#f7f7f7"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/homeBar"
-            app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/welcomeHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/welcome"
+        android:textColor="#f7f7f7"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeBar"
+        app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/home_monday"
@@ -226,34 +226,37 @@
         app:layout_constraintTop_toTopOf="@+id/goal_pieChart"
         app:layout_constraintVertical_bias="1.0" />
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/barChart"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/homeBackground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/welcomeHome"
-            app:layout_constraintVertical_bias="0.0">
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/homeBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeHome"
+        app:layout_constraintVertical_bias="0.0">
 
-        </com.github.mikephil.charting.charts.BarChart>
+    </com.github.mikephil.charting.charts.BarChart>
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/goal_pieChart"
-            android:layout_width="0dp"
-            android:layout_height="190dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/home_sunday"></com.github.mikephil.charting.charts.PieChart>
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/goal_pieChart"
+        android:layout_width="0dp"
+        android:layout_height="190dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:textColor="#f7f7f7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barChart"
+        app:layout_constraintTop_toTopOf="@+id/barChart"
+        app:layout_constraintVertical_bias="1.0"></com.github.mikephil.charting.charts.PieChart>
 
     <TextView
         android:id="@+id/goal_steps"
@@ -279,16 +282,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/weekly_goal"
         android:textColor="#f7f7f7"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/goal_pieChart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barChart" />
+        app:layout_constraintTop_toBottomOf="@+id/home_sunday"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/goalButton"
@@ -322,7 +328,7 @@
         android:text=""
         android:textAlignment="viewEnd"
         android:textColor="#f7f7f7"
-        android:textSize="21sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/goal_pieChart"
         app:layout_constraintEnd_toEndOf="@+id/goal_pieChart"
@@ -330,6 +336,24 @@
         app:layout_constraintStart_toStartOf="@+id/goal_pieChart"
         app:layout_constraintTop_toBottomOf="@+id/goal_Header"
         app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/caloriesToday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text=""
+        android:textColor="#f7f7f7"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/goal_Header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barChart"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </android.support.constraint.ConstraintLayout>

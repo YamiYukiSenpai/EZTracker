@@ -120,4 +120,6 @@
     <string name="bar_RealSteps">Pas</string>
     <string name="goal_toast">Toutes nos félicitations! Vous avez atteint votre objectif! Définir un autre!</string>
     <string name="weekCal">Semaine Cal</string>
+    <string name="calsBurnedToday">Calories brûlées aujourd\'hui:</string>
+
 </resources>
