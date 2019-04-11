@@ -71,11 +71,12 @@ public class HomeActivity extends AppCompatActivity {
 
     private TextView name;
     private TextView goal;
-    private TextView current;
+    //private TextView current;
     private TextView currentPercent;
     private Button goalButton;
-    private TextView stepsReal;
+    //private TextView stepsReal;
     private TextView valTest;
+    private TextView dailyCal;
 
     private String dbHeight;
     private String dbWeight;
@@ -131,7 +132,7 @@ public class HomeActivity extends AppCompatActivity {
                 stride = realHeight * (float)0.414;
                 stepPerMile = (float)160934.4 / stride;
                 calPerStep = calPerMile / stepPerMile;
-                //Log.d("MyTag", "valu:" + calPerStep);
+
                 int monday = dataSnapshot.child("steps").child("monday").getValue(Integer.class);
                 int tuesday = dataSnapshot.child("steps").child("tuesday").getValue(Integer.class);
                 int wednesday = dataSnapshot.child("steps").child("wednesday").getValue(Integer.class);
@@ -139,19 +140,40 @@ public class HomeActivity extends AppCompatActivity {
                 int friday = dataSnapshot.child("steps").child("friday").getValue(Integer.class);
                 int saturday = dataSnapshot.child("steps").child("saturday").getValue(Integer.class);
                 int sunday = dataSnapshot.child("steps").child("sunday").getValue(Integer.class);
-                //Log.d("MyTag", "monday:" + monday);
+
                 weekSteps = monday + tuesday + wednesday + thursday + friday + saturday + sunday;
 
                 weeklyCals = weekSteps * calPerStep;
 
                 double roundCals = (double)Math.round(weeklyCals * 10) / 10;
-                Log.d("MyTag", "total:" + roundCals);
-
-
-                // weekCalories = calPerStep;
-
+                //Log.d("MyTag", "total:" + roundCals);
 
                 valTest.setText(getString(R.string.weekCal)+"\n"+ roundCals);
+
+                //check for day then multiply by the number of steps for that day
+                switch (currentDay){
+                    case 1: //sunday
+                        dailyCal.setText(getString(R.string.calsBurnedToday)  + " " + (float)Math.round((sunday * calPerStep) * 10) /10);
+                        break;
+                    case 2: //monday
+                        dailyCal.setText(getString(R.string.calsBurnedToday)  + " " + (float)Math.round((monday * calPerStep) * 10) /10);
+                        break;
+                    case 3: //tuesday
+                        dailyCal.setText(getString(R.string.calsBurnedToday)  + " " + (float)Math.round((tuesday * calPerStep) * 10) /10);
+                        break;
+                    case 4: //wednesday
+                        dailyCal.setText(getString(R.string.calsBurnedToday)  + " " + (float)Math.round((wednesday * calPerStep) * 10) /10);
+                        break;
+                    case 5: //thursday
+                        dailyCal.setText(getString(R.string.calsBurnedToday)  + " " + (float)Math.round((thursday * calPerStep) * 10) /10);
+                        break;
+                    case 6: //friday
+                        dailyCal.setText(getString(R.string.calsBurnedToday) + " " + (float)Math.round((friday * calPerStep) * 10) /10);
+                        break;
+                    case 7: //saturday
+                        dailyCal.setText(getString(R.string.calsBurnedToday)  + " " + (float)Math.round((saturday * calPerStep) * 10) /10);
+                        break;
+                }
 
             }
 
@@ -199,8 +221,6 @@ public class HomeActivity extends AppCompatActivity {
                 barChart.setScaleEnabled(false);
                 barChart.setTouchEnabled(false);
 
-
-
                 ArrayList<BarEntry> barEntries = new ArrayList<>();
 
                 //set bargraph data depending on the day
@@ -213,7 +233,6 @@ public class HomeActivity extends AppCompatActivity {
                         barEntries.add(new BarEntry(2,realWednesday));
                         barEntries.add(new BarEntry(1,realTuesday));
                         barEntries.add(new BarEntry(0,realMonday));
-
                         realSunday = realStep;
                         myRef.child(user.getUid()).child("steps").child("sunday").setValue(realSunday);
                         break;
@@ -225,7 +244,6 @@ public class HomeActivity extends AppCompatActivity {
                         barEntries.add(new BarEntry(2,realThursday));
                         barEntries.add(new BarEntry(1,realWednesday));
                         barEntries.add(new BarEntry(0,realTuesday));
-
                         realMonday = realStep;
                         myRef.child(user.getUid()).child("steps").child("monday").setValue(realMonday);
                         break;
@@ -289,7 +307,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
 
                 BarDataSet dataSet = new BarDataSet(barEntries, "Steps Taken");
-                dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+                dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
 
                 BarData barData = new BarData(dataSet);
                 barData.setValueTextColor(Color.WHITE);
@@ -326,8 +344,6 @@ public class HomeActivity extends AppCompatActivity {
 
                         return;
                 }
-
-                //String[] days = new String[] {getString(R.string.bar_Mon),getString(R.string.bar_Tue),getString(R.string.bar_Wed),getString(R.string.bar_Thurs),getString(R.string.bar_Fri),getString(R.string.bar_Sat),getString(R.string.bar_Sun)};
 
                 XAxis xAxis = barChart.getXAxis();
                 xAxis.setTextSize(12f);
@@ -381,10 +397,10 @@ public class HomeActivity extends AppCompatActivity {
                 PieDataSet data_set = new PieDataSet(goal_entries, "");
                 PieData goal_data = new PieData(data_set);
 
-                data_set.setColors(ColorTemplate.JOYFUL_COLORS);
-                data_set.setFormSize(12f);
-                goal_data.setValueTextColor(Color.BLACK);
-                goal_data.setValueTextSize(14f);
+                data_set.setColors(ColorTemplate.COLORFUL_COLORS);
+                data_set.setFormSize(15f);
+                goal_data.setValueTextColor(Color.WHITE);
+                goal_data.setValueTextSize(16f);
 
                 goal_chart.setData(goal_data);
 
@@ -502,6 +518,7 @@ public class HomeActivity extends AppCompatActivity {
         goal_chart = findViewById(R.id.goal_pieChart);
         goalButton = findViewById(R.id.goalButton);
         valTest = findViewById(R.id.tester);
+        dailyCal = findViewById(R.id.caloriesToday);
     }
 
     public class MyXAxisValueFormatter implements IAxisValueFormatter{
