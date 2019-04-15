@@ -268,4 +268,4 @@ you wish to make the device smaller and more portable. This concludes the end of
 the build instructions, and below is a placeholder image regarding the final
 product.
 
-![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/build14.png)
+![](https://github.com/YamiYukiSenpai/EZTracker/blob/master/Documentation/Pictures/finishProduct.png)
