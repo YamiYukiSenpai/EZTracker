@@ -131,13 +131,14 @@
     <EditText
         android:id="@+id/registerWeight"
         android:layout_width="283dp"
-        android:layout_height="47dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#f7f7f7"
         android:ems="10"
-        android:hint="@string/update_weight"
+        android:hint="@string/register_weight_kg"
         android:inputType="numberDecimal"
         android:textColor="#f7f7f7"
         android:textColorHint="#f7f7f7"
@@ -156,7 +157,7 @@
         android:layout_marginBottom="8dp"
         android:backgroundTint="#f7f7f7"
         android:ems="10"
-        android:hint="@string/update_height"
+        android:hint="@string/register_height_m"
         android:inputType="numberDecimal"
         android:textColor="#f7f7f7"
         android:textColorHint="#f7f7f7"
@@ -165,7 +166,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerWeight"
         app:layout_constraintVertical_bias="0.0" />
-
 
     <EditText
         android:id="@+id/registerDob"

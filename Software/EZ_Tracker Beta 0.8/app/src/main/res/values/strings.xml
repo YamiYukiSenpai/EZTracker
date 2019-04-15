@@ -11,11 +11,11 @@
     <string name="login_create_account">Create Account</string>
     <string name="register_email">E-Mail *</string>
     <string name="register_registration">Registration</string>
-    <string name="register_name">Name</string>
+    <string name="register_name">Name *</string>
     <string name="register_female">Female</string>
     <string name="register_male">Male</string>
-    <string name="register_height_m">Height (cm)</string>
-    <string name="register_weight_kg">Weight (kg)</string>
+    <string name="register_height_m">Height (cm) *</string>
+    <string name="register_weight_kg">Weight (kg) *</string>
     <string name="register_password">Password *</string>
     <string name="register_bday">Birthday (YYYY/MM/DD)</string>
     <string name="home_title">Home</string>
@@ -96,7 +96,8 @@
     <string name="loginToast_success">Successfully Logged In</string>
     <string name="loginToast_incorrect">Incorrect E-mail or Password</string>
     <string name="login_LangSelect">Select Language</string>
-    <string name="toastReg_email">Please enter e-mail</string>
+    <string name="toastReg_email">Please enter a e-mail</string>
+    <string name="toastReg_email_two">Please enter a valid e-mail</string>
     <string name="toastReg_pw">Please enter password</string>
     <string name="toastReg_success">Registered Successfully</string>
     <string name="toastReg_fail">Cannot Register</string>
@@ -121,6 +122,10 @@
     <string name="goal_toast">Congratulations! You met your goal! Set another!</string>
     <string name="weekCal">Weekly Cal</string>
     <string name="calsBurnedToday">Calories burned today:</string>
+    <string name="password_len_err">Your password must be at least 8 characters</string>
+    <string name="updateInfo_name">Name</string>
+    <string name="register_height_err">Please enter a height</string>
+    <string name="register_weight_Err">Please enter a weight</string>
 
 </resources>
 

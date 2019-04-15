@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +34,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dbRef;
     public String name;
+    public String height;
+    public String weight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +59,41 @@ public class RegistrationActivity extends AppCompatActivity {
                 EditText editTextPassword = findViewById(R.id.registerPassword);
                 String password = editTextPassword.getText().toString().trim();
 
+                EditText editTextName = findViewById(R.id.registerName);
+                name = editTextName.getText().toString().trim();
+
+                EditText editTextHeight = findViewById(R.id.registerHeight);
+                height = editTextHeight.getText().toString().trim();
+
+                EditText editTextWeight = findViewById(R.id.registerWeight);
+                weight = editTextWeight.getText().toString().trim();
+
+                if (TextUtils.isEmpty(name)){
+                    Toast.makeText(RegistrationActivity.this, "Please enter a name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(RegistrationActivity.this, R.string.toastReg_email, Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(Patterns.EMAIL_ADDRESS.matcher(email).matches() == false){
+                    Toast.makeText(RegistrationActivity.this, R.string.toastReg_email_two, Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(RegistrationActivity.this, R.string.toastReg_pw, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (password.length() < 8){
+                    Toast.makeText(RegistrationActivity.this, R.string.password_len_err, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(height)){
+                    Toast.makeText(RegistrationActivity.this, R.string.register_height_err, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(weight)){
+                    Toast.makeText(RegistrationActivity.this, R.string.register_weight_Err, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -70,12 +102,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = task.getResult().getUser();
-                            EditText editTextName = findViewById(R.id.registerName);
-                            String name = editTextName.getText().toString().trim();
-                            EditText editTextHeight = findViewById(R.id.registerHeight);
-                            String height = editTextHeight.getText().toString().trim();
-                            EditText editTextWeight = findViewById(R.id.registerWeight);
-                            String weight = editTextWeight.getText().toString().trim();
+
                             EditText editTextDob = findViewById(R.id.registerDob);
                             String dob = editTextDob.getText().toString().trim();
 
@@ -90,7 +117,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             dbRef.child(user.getUid()).child("steps").child("friday").setValue(0);
                             dbRef.child(user.getUid()).child("steps").child("saturday").setValue(0);
                             dbRef.child(user.getUid()).child("steps").child("sunday").setValue(0);
-                            dbRef.child(user.getUid()).child("steps").child("goalSteps").setValue(45000);
+                            dbRef.child(user.getUid()).child("steps").child("goalSteps").setValue(35000);
                             dbRef.child(user.getUid()).child("steps").child("calories").setValue(0);
                             dbRef.child(user.getUid()).child("steps").child("realSteps").setValue(0);
 
